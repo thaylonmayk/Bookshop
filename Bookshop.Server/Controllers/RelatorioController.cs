@@ -20,7 +20,7 @@ public class RelatorioController : ControllerBase
 
         var localReport = new LocalReport
         {
-            ReportPath = Path.Combine(Directory.GetCurrentDirectory(), "Reports", "RelatorioLivroAutor.rdlc")
+            ReportPath = Path.Combine(Directory.GetCurrentDirectory(), "Reports", "LivroAutorReport.rdl")
         };
 
         localReport.DataSources.Add(new ReportDataSource("RelatorioDataSet", dataTable));
@@ -28,5 +28,36 @@ public class RelatorioController : ControllerBase
         var reportBytes = localReport.Render("PDF");
 
         return File(reportBytes, "application/pdf", "Relatorio.pdf");
+    }
+
+    [HttpGet("gerar-relatorio2")]
+    public async Task<IActionResult> GerarRelatorio2()
+    {
+        var dataTable = await _relatorioBusiness.GetRelatorioDataAsync();
+
+        var localReport = new LocalReport
+        {
+            ReportPath = Path.Combine(Directory.GetCurrentDirectory(), "Reports", "LivroAutorReport.rdl")
+        };
+
+        localReport.DataSources.Add(new ReportDataSource("RelatorioDataSet", dataTable));
+
+        string reportType = "PDF";
+        string mimeType;
+        string encoding;
+        string fileNameExtension;
+        Warning[] warnings;
+        string[] streams;
+        var reportBytes = localReport.Render(
+            reportType,
+            null,
+            out mimeType,
+            out encoding,
+            out fileNameExtension,
+            out streams,
+            out warnings
+        );
+
+        return File(reportBytes, mimeType, "Relatorio.pdf");
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RelatorioDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="RelatorioDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="LivroAutorAssuntoView">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AutorCod" type="xs:int" minOccurs="0" />
+              <xs:element name="AutorNome" type="xs:string" minOccurs="0" />
+              <xs:element name="AutorSobrenome" type="xs:string" minOccurs="0" />
+              <xs:element name="LivroCod" type="xs:int" minOccurs="0" />
+              <xs:element name="LivroTitulo" type="xs:string" minOccurs="0" />
+              <xs:element name="LivroEditora" type="xs:string" minOccurs="0" />
+              <xs:element name="LivroAnoPublicacao" type="xs:string" minOccurs="0" />
+              <xs:element name="LivroEdicao" type="xs:int" minOccurs="0" />
+              <xs:element name="LivroSinopse" type="xs:string" minOccurs="0" />
+              <xs:element name="LivroValor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AssuntoCod" type="xs:int" minOccurs="0" />
+              <xs:element name="AssuntoDescricao" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

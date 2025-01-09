@@ -20,7 +20,17 @@ namespace Bookshop.Application.Business
 
         public async Task<DataTable> GetRelatorioDataAsync()
         {
-            return await _relatorioRepository.GetRelatorioDataAsync();
+            DataTable dataTable = await _relatorioRepository.GetRelatorioDataAsync();
+
+            //ReportDataSource rds = new ReportDataSource("DataSetRelatorio", dataTable);
+
+            //ReportViewer reportViewer = new ReportViewer();
+            //reportViewer.LocalReport.DataSources.Clear();
+            //reportViewer.LocalReport.DataSources.Add(rds);
+            //reportViewer.LocalReport.ReportPath = "LivroAutorReport.rdl";
+            //reportViewer.RefreshReport();
+
+            return dataTable;
         }
     }
 
