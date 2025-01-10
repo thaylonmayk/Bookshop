@@ -1,0 +1,13 @@
+.footer {
+    bottom: 0;
+    background-color: #e3f2fd;
+    color: #e0e9f5;
+    width: 100%;  
+    position: absolute;
+}
+.footer .text-bluegray-600 {
+    color: #475569; /* text-bluegray-600 */
+}
+.footer .container {
+    margin: 0 !important;
+}

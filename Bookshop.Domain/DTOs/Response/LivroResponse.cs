@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bookshop.Domain.DTOs.Response
+﻿namespace Bookshop.Domain.DTOs.Response
 {
     public class LivroResponse
     {
@@ -15,5 +9,7 @@ namespace Bookshop.Domain.DTOs.Response
         public int Edicao { get; set; }
         public string Sinopse { get; set; }
         public decimal Valor { get; set; }
+        public IEnumerable<AutorResponse> Autores { get; set; }
+        public IEnumerable<AssuntoResponse> Assuntos { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using Microsoft.Reporting.NETCore;
 
 [ApiController]
 [Route("api/[controller]")]
-public class RelatorioController : ControllerBase
+public class RelatoriosController : ControllerBase
 {
     private readonly IRelatorioBusiness _relatorioBusiness;
 
-    public RelatorioController(IRelatorioBusiness relatorioBusiness)
+    public RelatoriosController(IRelatorioBusiness relatorioBusiness)
     {
         _relatorioBusiness = relatorioBusiness;
     }

@@ -15,7 +15,7 @@ namespace Bookshop.Domain.DTOs.Requests
         public int Edicao { get; set; }
         public string Sinopse { get; set; }
         public decimal Valor { get; set; }
-        public List<AutorRequest> Autores { get; set; }
-        public List<AssuntoRequest> Assuntos { get; set; }
+        public List<int> Autores { get; set; }
+        public List<int> Assuntos { get; set; }
     }
 }

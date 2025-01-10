@@ -9,7 +9,7 @@ namespace Bookshop.Application.Profiles
     {
         public AssuntoProfile()
         {
-            CreateMap<AssuntoRequest, AssuntoEntity>().ForMember(dest => dest.Cod, opt => opt.Ignore());
+            CreateMap<AssuntoRequest, AssuntoEntity>();
             CreateMap<AssuntoEntity, AssuntoResponse>();
         }
     }

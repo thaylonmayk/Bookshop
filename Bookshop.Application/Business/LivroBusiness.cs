@@ -80,16 +80,7 @@ namespace Bookshop.Application.Business
             var autores = new List<AutorResponse>();
             foreach (var autorRequest in request.Autores)
             {
-                AutorResponse autorResponse;
-                if (autorRequest.Cod.HasValue && autorRequest.Cod > 0)
-                {
-                    autorResponse = await _autorBusiness.GetByIdAsync(autorRequest.Cod.Value);
-                }
-                else
-                {
-                    autorResponse = await _autorBusiness.AddAsync(autorRequest);
-                }
-
+                AutorResponse autorResponse = await _autorBusiness.GetByIdAsync(autorRequest);
                 autores.Add(autorResponse);
             }
 
@@ -100,16 +91,7 @@ namespace Bookshop.Application.Business
             var assuntos = new List<AssuntoResponse>();
             foreach (var assuntoRequest in request.Assuntos)
             {
-                AssuntoResponse assuntoResponse;
-                if (assuntoRequest.Cod.HasValue && assuntoRequest.Cod > 0)
-                {
-                    assuntoResponse = await _assuntoBusiness.GetByIdAsync(assuntoRequest.Cod.Value);
-                }
-                else
-                {
-                    assuntoResponse = await _assuntoBusiness.AddAsync(assuntoRequest);
-                }
-
+                AssuntoResponse assuntoResponse = await _assuntoBusiness.GetByIdAsync(assuntoRequest);
                 assuntos.Add(assuntoResponse);
             }
 

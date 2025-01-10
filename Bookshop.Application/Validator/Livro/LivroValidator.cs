@@ -23,8 +23,6 @@ namespace Bookshop.Application.Validator.Livro
             RuleFor(p => p.AnoPublicacao)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .MaximumLength(4).WithMessage("{PropertyName} must not exceed 4 characters.");
-            RuleFor(p => p.Valor)
-                .NotEmpty().WithMessage("{PropertyName} is required.");
         }
     }
 }
