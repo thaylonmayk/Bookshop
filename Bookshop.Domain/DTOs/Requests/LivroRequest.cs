@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bookshop.Domain.DTOs.Requests
+﻿namespace Bookshop.Domain.DTOs.Requests
 {
     public class LivroRequest
     {

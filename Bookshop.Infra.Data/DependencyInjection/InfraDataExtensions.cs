@@ -24,8 +24,10 @@ namespace Bookshop.Infra.Data.DependencyInjection
 
             services.AddScoped<ILivroRepository, LivroRepository>();
             services.AddScoped<IAutorRepository, AutorRepository>();
-            services.AddScoped<IAssuntoRepository, AssuntoRepository>(); 
+            services.AddScoped<IAssuntoRepository, AssuntoRepository>();
             services.AddScoped<IRelatorioRepository, RelatorioRepository>();
+            services.AddScoped<ICanalRepository, CanalRepository>();
+            services.AddScoped<ICanalPrecoRepository, CanalPrecoRepository>();
 
             return services;
         }

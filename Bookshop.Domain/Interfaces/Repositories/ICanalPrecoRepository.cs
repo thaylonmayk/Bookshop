@@ -2,7 +2,7 @@
 
 namespace Bookshop.Domain.Interfaces.Repositories
 {
-    public interface ILivroRepository : IBaseRepository<LivroEntity>
+    public interface ICanalPrecoRepository : IBaseRepository<CanalPrecoEntity>
     {
     }
 }

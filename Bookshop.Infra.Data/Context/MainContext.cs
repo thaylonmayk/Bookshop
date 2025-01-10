@@ -1,8 +1,6 @@
 ﻿using Bookshop.Domain.Entities;
 using Bookshop.Domain.Entities.View;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.Collections.Generic;
 
 namespace Bookshop.Infra.Data.Context
 {
@@ -10,12 +8,14 @@ namespace Bookshop.Infra.Data.Context
     {
         public MainContext(DbContextOptions<MainContext> options) : base(options) { }
 
-        public DbSet<LivroEntity> Livros { get; set; }
-        public DbSet<AutorEntity> Autores { get; set; }
-        public DbSet<AssuntoEntity> Assuntos { get; set; }
-        public DbSet<LivroAutorEntity> LivrosAutores { get; set; }
-        public DbSet<LivroAssuntoEntity> LivrosAssuntos { get; set; }
-        public DbSet<LivroAutorAssuntoView> LivrosAutoresAssuntos { get; set; }
+        public virtual DbSet<LivroEntity> Livros { get; set; }
+        public virtual DbSet<AutorEntity> Autores { get; set; }
+        public virtual DbSet<AssuntoEntity> Assuntos { get; set; }
+        public virtual DbSet<LivroAutorEntity> LivrosAutores { get; set; }
+        public virtual DbSet<LivroAssuntoEntity> LivrosAssuntos { get; set; }
+        public virtual DbSet<LivroAutorAssuntoView> LivrosAutoresAssuntos { get; set; }
+        public virtual DbSet<CanalEntity> Canais { get; set; }
+        public virtual DbSet<CanalPrecoEntity> CanalPrecos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -73,6 +73,24 @@ namespace Bookshop.Infra.Data.Context
             modelBuilder.Entity<LivroAutorAssuntoView>()
                 .ToView("vw_livros_autores_assuntos")
                 .HasKey(e => new { e.LivroCod, e.AutorCod, e.AssuntoCod });
+
+            modelBuilder.Entity<CanalPrecoEntity>()
+                .HasOne(la => la.Canais)
+                .WithMany(l => l.CanalPrecos)
+                .HasForeignKey(la => la.CodCanal);
+
+            modelBuilder.Entity<CanalPrecoEntity>()
+                .HasOne(la => la.Livros)
+                .WithMany(l => l.CanalPrecos)
+                .HasForeignKey(la => la.CodLivro);
+
+            modelBuilder.Entity<CanalPrecoEntity>()
+                .Property(e => e.CreatedDate)
+                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
+
+            modelBuilder.Entity<CanalEntity>()
+                .Property(e => e.CreatedDate)
+                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
         }
     }
 }

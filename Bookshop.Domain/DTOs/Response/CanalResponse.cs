@@ -1,8 +1,8 @@
 ﻿namespace Bookshop.Domain.DTOs.Response
 {
-    public class AssuntoResponse
+    public class CanalResponse
     {
         public int Cod { get; set; }
-        public string Descricao { get; set; }
+        public string Nome { get; set; }
     }
 }

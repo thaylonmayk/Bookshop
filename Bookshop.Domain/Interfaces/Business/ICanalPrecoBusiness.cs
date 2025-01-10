@@ -4,8 +4,7 @@ using Bookshop.Domain.Entities;
 
 namespace Bookshop.Domain.Interfaces.Business
 {
-    public interface IAutorBusiness : IBusiness<AutorEntity, AutorRequest, AutorResponse>
+    public interface ICanalPrecoBusiness : IBusiness<CanalPrecoEntity, CanalPrecoRequest, CanalPrecoResponse>
     {
-        Task<AutorResponse> GetByNomeAsync(string nome, string sobrenome);
     }
 }

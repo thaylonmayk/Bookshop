@@ -18,7 +18,7 @@ builder.Services
     .AddBusiness(builder.Configuration);
 
 
-var app = builder.Build(); 
+var app = builder.Build();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
@@ -38,10 +38,10 @@ app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod())
 
 app.UseAuthorization();
 
-app.UseRouting(); 
-app.UseEndpoints(endpoints => 
-{ 
-    endpoints.MapControllers(); 
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
 });
 
 app.MapFallbackToFile("/index.html");

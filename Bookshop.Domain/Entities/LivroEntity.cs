@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bookshop.Domain.Entities
+﻿namespace Bookshop.Domain.Entities
 {
     public class LivroEntity : BaseEntity
     {
@@ -16,5 +10,6 @@ namespace Bookshop.Domain.Entities
         public decimal Valor { get; set; }
         public ICollection<LivroAutorEntity> LivroAutores { get; set; }
         public ICollection<LivroAssuntoEntity> LivroAssuntos { get; set; }
+        public ICollection<CanalPrecoEntity> CanalPrecos { get; set; }
     }
 }

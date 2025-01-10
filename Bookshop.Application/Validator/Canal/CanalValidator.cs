@@ -1,11 +1,11 @@
 ﻿using Bookshop.Domain.DTOs.Requests;
 using FluentValidation;
 
-namespace Bookshop.Application.Validator.Autor
+namespace Bookshop.Application.Validator.Canal
 {
-    public class AutorValidator : AbstractValidator<AutorRequest>
+    public class CanalValidator : AbstractValidator<CanalRequest>
     {
-        public AutorValidator()
+        public CanalValidator()
         {
             RuleFor(p => p.Nome)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
