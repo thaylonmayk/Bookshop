@@ -6,16 +6,16 @@ namespace Bookshop.Domain.Entities
     {
         [Key]
         public int Cod { get; set; }
-        private DateTimeOffset _createdDate;
-        private DateTimeOffset _lastModifiedDate;
+        private DateTime _createdDate;
+        private DateTime _lastModifiedDate;
 
-        public DateTimeOffset CreatedDate
+        public DateTime CreatedDate
         {
             get => _createdDate;
             set => _createdDate = value.ToUniversalTime();
         }
 
-        public DateTimeOffset LastModifiedDate
+        public DateTime LastModifiedDate
         {
             get => _lastModifiedDate;
             set => _lastModifiedDate = value.ToUniversalTime();

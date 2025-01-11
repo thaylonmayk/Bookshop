@@ -46,29 +46,6 @@ namespace Bookshop.Infra.Data.Context
                 .WithMany()
                 .HasForeignKey(la => la.CodAssunto);
 
-            modelBuilder.Entity<LivroEntity>()
-                .Property(e => e.CreatedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
-
-            modelBuilder.Entity<LivroEntity>()
-                .Property(e => e.LastModifiedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
-
-            modelBuilder.Entity<AutorEntity>()
-                .Property(e => e.CreatedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
-
-            modelBuilder.Entity<AutorEntity>()
-                .Property(e => e.LastModifiedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
-
-            modelBuilder.Entity<AssuntoEntity>()
-                .Property(e => e.CreatedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
-
-            modelBuilder.Entity<AssuntoEntity>()
-                .Property(e => e.LastModifiedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
 
             modelBuilder.Entity<LivroAutorAssuntoView>()
                 .ToView("vw_livros_autores_assuntos")
@@ -84,13 +61,30 @@ namespace Bookshop.Infra.Data.Context
                 .WithMany(l => l.CanalPrecos)
                 .HasForeignKey(la => la.CodLivro);
 
-            modelBuilder.Entity<CanalPrecoEntity>()
-                .Property(e => e.CreatedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
+           modelBuilder.Entity<AutorEntity>()
+                .HasIndex(a => a.Nome)
+                .HasDatabaseName("IX_Autores_Nome");
+
+            modelBuilder.Entity<AssuntoEntity>()
+                .HasIndex(a => a.Descricao)
+                .HasDatabaseName("IX_Assuntos_Descricao");
 
             modelBuilder.Entity<CanalEntity>()
-                .Property(e => e.CreatedDate)
-                .HasConversion(v => v.UtcDateTime, v => new DateTimeOffset(v));
+                .HasIndex(c => c.Nome)
+                .HasDatabaseName("IX_Canais_Nome");
+
+            modelBuilder.Entity<CanalEntity>()
+                .HasIndex(c => c.Nome)
+                .HasDatabaseName("IX_CanalPrecos_CodLivro");
+
+
+            modelBuilder.Entity<CanalEntity>()
+                .HasIndex(c => c.Nome)
+                .HasDatabaseName("IX_CanalPrecos_CodCanal");
+
+            modelBuilder.Entity<CanalEntity>()
+                .HasIndex(c => c.Nome)
+                .HasDatabaseName("IX_LivrosAutoresAssuntos_AutorCod_LivroCod_AssuntoCod");
         }
     }
 }

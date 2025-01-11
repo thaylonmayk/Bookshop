@@ -6,11 +6,11 @@ namespace Bookshop.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CanalsController : ControllerBase
+    public class CanaisController : ControllerBase
     {
         private readonly ICanalBusiness _canalBusiness;
 
-        public CanalsController(ICanalBusiness canalBusiness)
+        public CanaisController(ICanalBusiness canalBusiness)
         {
             _canalBusiness = canalBusiness;
         }

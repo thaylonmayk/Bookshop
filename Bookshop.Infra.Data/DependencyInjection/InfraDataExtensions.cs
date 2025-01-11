@@ -1,4 +1,5 @@
-﻿using Bookshop.Domain.Interfaces.Repositories;
+﻿using Bookshop.Domain.Entities;
+using Bookshop.Domain.Interfaces.Repositories;
 using Bookshop.Infra.Data.Context;
 using Bookshop.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,13 @@ namespace Bookshop.Infra.Data.DependencyInjection
             services.AddScoped<IRelatorioRepository, RelatorioRepository>();
             services.AddScoped<ICanalRepository, CanalRepository>();
             services.AddScoped<ICanalPrecoRepository, CanalPrecoRepository>();
+
+            // Register IBaseRepository for each entity type
+            services.AddScoped<IBaseRepository<LivroEntity>, BaseRepository<LivroEntity>>();
+            services.AddScoped<IBaseRepository<AutorEntity>, BaseRepository<AutorEntity>>();
+            services.AddScoped<IBaseRepository<AssuntoEntity>, BaseRepository<AssuntoEntity>>();
+            services.AddScoped<IBaseRepository<CanalPrecoEntity>, BaseRepository<CanalPrecoEntity>>();
+            services.AddScoped<IBaseRepository<CanalEntity>, BaseRepository<CanalEntity>>();
 
             return services;
         }

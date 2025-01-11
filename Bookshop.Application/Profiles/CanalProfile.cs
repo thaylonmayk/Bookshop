@@ -9,8 +9,8 @@ namespace Bookshop.Application.Profiles
     {
         public CanalProfile()
         {
-            CreateMap<AutorRequest, AutorEntity>();
-            CreateMap<AutorEntity, AutorResponse>();
+            CreateMap<CanalRequest, CanalEntity>();
+            CreateMap<CanalEntity, CanalResponse>();
         }
     }
 }

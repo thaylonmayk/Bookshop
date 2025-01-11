@@ -6,11 +6,11 @@ namespace Bookshop.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AutorController : ControllerBase
+    public class AutoresController : ControllerBase
     {
         private readonly IAutorBusiness _autorBusiness;
 
-        public AutorController(IAutorBusiness autorBusiness)
+        public AutoresController(IAutorBusiness autorBusiness)
         {
             _autorBusiness = autorBusiness;
         }

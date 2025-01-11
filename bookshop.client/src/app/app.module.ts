@@ -23,6 +23,12 @@ import { FooterComponent } from './footer/footer.component';
 import { ErrorInterceptor } from '../services/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { provideRouter } from '@angular/router';
+import { CanaisComponent } from './forms/canais/canais.component';
+import { CanaisAddComponent } from './components/canais-add/canais-add.component';
+import { CanaisEditComponent } from './components/canais-edit/canais-edit.component';
+import { CanalPrecosComponent } from './forms/canal-precos/canal-precos.component';
+import { CanalPrecosAddComponent } from './components/canal-precos-add/canal-precos-add.component';
+import { CanalPrecosEditComponent } from './components/canal-precos-edit/canal-precos-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +46,12 @@ import { provideRouter } from '@angular/router';
     AssuntosAddComponent,
     AssuntosEditComponent,
     RelatorioComponent,
+    CanaisComponent,
+    CanaisAddComponent,
+    CanaisEditComponent,
+    CanalPrecosComponent,
+    CanalPrecosAddComponent,
+    CanalPrecosEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,9 +59,13 @@ import { provideRouter } from '@angular/router';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbAlertModule, 
-    ToastrModule.forRoot()
-  ],
+    NgbAlertModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-center-center', // Custom position class
+      timeOut: 3000, // Duration of the toast
+      closeButton: true, // Show close button
+      progressBar: true // Show progress bar)
+    })],
   providers: [
     provideRouter(routes),
     provideHttpClient(),

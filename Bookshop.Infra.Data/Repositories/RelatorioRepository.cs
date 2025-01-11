@@ -37,9 +37,14 @@ public class RelatorioRepository : IRelatorioRepository
         dataTable.Columns.Add("LivroValor", typeof(decimal));
         dataTable.Columns.Add("AssuntoCod", typeof(int));
         dataTable.Columns.Add("AssuntoDescricao", typeof(string));
+  
+  
+        var groupedItems = items
+            .GroupBy(item => item.LivroTitulo)
+            .SelectMany(group => group.OrderBy(item => item.AutorNome));
 
         // Adicionar linhas
-        foreach (var item in items)
+        foreach (var item in groupedItems)
         {
             dataTable.Rows.Add(
                 item.AutorCod, item.AutorNome, item.AutorSobrenome,

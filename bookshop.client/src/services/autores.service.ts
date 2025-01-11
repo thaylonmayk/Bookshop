@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class AutoresService {
-  private readonly apiUrl = `${environment.apiUrl}/autor`;
+  private readonly apiUrl = `${environment.apiUrl}/autores`;
 
   constructor(readonly http: HttpClient) { }
 

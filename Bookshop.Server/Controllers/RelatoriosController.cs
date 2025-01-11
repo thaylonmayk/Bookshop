@@ -1,4 +1,5 @@
-﻿using Bookshop.Domain.Interfaces.Business;
+﻿using System.Text;
+using Bookshop.Domain.Interfaces.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Reporting.NETCore;
 
@@ -14,23 +15,6 @@ public class RelatoriosController : ControllerBase
     }
 
     [HttpGet("gerar-relatorio")]
-    public async Task<IActionResult> GerarRelatorio()
-    {
-        var dataTable = await _relatorioBusiness.GetRelatorioDataAsync();
-
-        var localReport = new LocalReport
-        {
-            ReportPath = Path.Combine(Directory.GetCurrentDirectory(), "Reports", "LivroAutorReport.rdl")
-        };
-
-        localReport.DataSources.Add(new ReportDataSource("RelatorioDataSet", dataTable));
-
-        var reportBytes = localReport.Render("PDF");
-
-        return File(reportBytes, "application/pdf", "Relatorio.pdf");
-    }
-
-    [HttpGet("gerar-relatorio2")]
     public async Task<IActionResult> GerarRelatorio2()
     {
         var dataTable = await _relatorioBusiness.GetRelatorioDataAsync();
@@ -59,5 +43,29 @@ public class RelatoriosController : ControllerBase
         );
 
         return File(reportBytes, mimeType, "Relatorio.pdf");
+    }
+    [HttpGet("gerar-relatorio-csv")]
+    public async Task<IActionResult> GenerateCsvReportAsync()
+    {
+        var stream = await _relatorioBusiness.GenerateCsvReportAsync();
+        using var memoryStream = new MemoryStream();
+        await stream.CopyToAsync(memoryStream);
+        var csvBytes = memoryStream.ToArray();
+        var fileName = $"Relatorio_{DateTime.Now:yyyyMMdd}.csv";
+        return File(csvBytes, "text/csv", fileName);
+    }
+    [HttpGet("gerar-relatorio-excel")]
+    public async Task<IActionResult> GenerateExcelReportAsync()
+    {
+        var excelBytes = await _relatorioBusiness.GenerateExcelReportAsync();
+        var fileName = $"Relatorio_{DateTime.Now:yyyyMMdd}.xlsx";
+        return File(excelBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+    }
+    [HttpGet("gerar-relatorio-pdf")]
+    public async Task<IActionResult> GeneratePdfReportAsync()
+    {
+        var reportBytes = await _relatorioBusiness.GeneratePdfReportAsync();
+        var fileName = $"Relatorio_{DateTime.Now:yyyyMMdd}.pdf";
+        return File(reportBytes, "application/pdf", fileName);
     }
 }

@@ -8,8 +8,8 @@
         public int Edicao { get; set; }
         public string Sinopse { get; set; }
         public decimal Valor { get; set; }
-        public ICollection<LivroAutorEntity> LivroAutores { get; set; }
-        public ICollection<LivroAssuntoEntity> LivroAssuntos { get; set; }
-        public ICollection<CanalPrecoEntity> CanalPrecos { get; set; }
+        public virtual ICollection<LivroAutorEntity> LivroAutores { get; set; }
+        public virtual ICollection<LivroAssuntoEntity> LivroAssuntos { get; set; }
+        public virtual ICollection<CanalPrecoEntity> CanalPrecos { get; set; }
     }
 }

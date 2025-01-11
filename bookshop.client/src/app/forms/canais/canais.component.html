@@ -1,0 +1,34 @@
+<h4>Canais</h4>
+
+<button class="btn btn-primary" (click)="addCanal()">
+  Adicionar Canal
+</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Descrição</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (canal of canais; track canal.descricao; let i = $index) {
+    <tr>
+      <td>{{ canal.cod }}</td>
+      <td>{{ canal.descricao }}</td>
+      <td>
+        <a
+          class="btn btn-warning"
+          href=""
+          [routerLink]="['/canaisEdit/', canal.cod]"
+          >Editar</a
+        >
+        <a class="btn btn-danger" (click)="deleteCanal(canal.cod)"
+          >Excluir</a
+        >
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
